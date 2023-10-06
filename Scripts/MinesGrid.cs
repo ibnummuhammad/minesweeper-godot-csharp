@@ -107,47 +107,6 @@ public partial class MinesGrid : TileMap
 		SetCell(DEFAULT_LAYER, cellCoord, TILE_SET_ID, CELLS[cell_type]);
 	}
 
-	private void PlaceFlag(Vector2I cellCoord)
-	{
-		TileData tileData = GetCellTileData(DEFAULT_LAYER, cellCoord);
-		Vector2I atlastCoordinates = GetCellAtlasCoords(DEFAULT_LAYER, cellCoord);
-		bool isEmptyCell = atlastCoordinates == new Vector2I(2, 2);
-		bool isFlagCell = atlastCoordinates == new Vector2I(0, 2);
-
-		if (!isEmptyCell && !isFlagCell)
-			return;
-
-		if (isFlagCell)
-		{
-			SetTileCell(cellCoord, "DEFAULT");
-			cellsWithFlags.Remove(cellCoord);
-			flagsPlaced = flagsPlaced - 1;
-		}
-		else if (isEmptyCell)
-		{
-			if (flagsPlaced == numberOfMines)
-				return;
-
-			flagsPlaced = flagsPlaced + 1;
-			SetTileCell(cellCoord, "FLAG");
-			cellsWithFlags.Add(cellCoord);
-		}
-
-		int count = 0;
-		foreach (var flagCell in cellsWithFlags)
-			foreach (var mineCell in cellsWithMines)
-				if (flagCell.X == mineCell.X && flagCell.Y == mineCell.Y)
-					count = count + 1;
-		if (count == cellsWithMines.Count)
-			Win();
-	}
-
-	private void Win()
-	{
-		GD.Print("WIN");
-		isGameFinished = true;
-	}
-
 	private void OnCellClicked(Vector2I cellCoord)
 	{
 		TileData tileData = GetCellTileData(DEFAULT_LAYER, cellCoord);
@@ -221,6 +180,58 @@ public partial class MinesGrid : TileMap
 		return mineCount;
 	}
 
+	private void Lose(Vector2I cellCoord)
+	{
+		// EmitSignal(nameof(GameLost));
+		isGameFinished = true;
+
+		foreach (var cell in cellsWithMines)
+			SetTileCell(cell, "MINE");
+
+		SetTileCell(cellCoord, "MINE_RED");
+	}
+
+	private void PlaceFlag(Vector2I cellCoord)
+	{
+		TileData tileData = GetCellTileData(DEFAULT_LAYER, cellCoord);
+		Vector2I atlastCoordinates = GetCellAtlasCoords(DEFAULT_LAYER, cellCoord);
+		bool isEmptyCell = atlastCoordinates == new Vector2I(2, 2);
+		bool isFlagCell = atlastCoordinates == new Vector2I(0, 2);
+
+		if (!isEmptyCell && !isFlagCell)
+			return;
+
+		if (isFlagCell)
+		{
+			SetTileCell(cellCoord, "DEFAULT");
+			cellsWithFlags.Remove(cellCoord);
+			flagsPlaced = flagsPlaced - 1;
+		}
+		else if (isEmptyCell)
+		{
+			if (flagsPlaced == numberOfMines)
+				return;
+
+			flagsPlaced = flagsPlaced + 1;
+			SetTileCell(cellCoord, "FLAG");
+			cellsWithFlags.Add(cellCoord);
+		}
+
+		int count = 0;
+		foreach (var flagCell in cellsWithFlags)
+			foreach (var mineCell in cellsWithMines)
+				if (flagCell.X == mineCell.X && flagCell.Y == mineCell.Y)
+					count = count + 1;
+		if (count == cellsWithMines.Count)
+			Win();
+	}
+
+	private void Win()
+	{
+		GD.Print("WIN");
+		isGameFinished = true;
+	}
+
 	private List<Vector2I> GetSurroundingCellsToCheck(Vector2I currentCell)
 	{
 		Vector2I targetCell;
@@ -236,21 +247,5 @@ public partial class MinesGrid : TileMap
 			}
 
 		return surroundingCells;
-	}
-
-	private void Lose(Vector2I cellCoord)
-	{
-		// EmitSignal(nameof(GameLost));
-		isGameFinished = true;
-
-		foreach (var cell in cellsWithMines)
-			SetTileCell(cell, "MINE");
-
-		SetTileCell(cellCoord, "MINE_RED");
-	}
-
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
 	}
 }
