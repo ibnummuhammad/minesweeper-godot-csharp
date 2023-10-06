@@ -95,7 +95,7 @@ public partial class MinesGrid : TileMap
 			cellsWithMines.Add(cellCoordinates);
 		}
 
-		foreach (var cell in cellsWithMines)
+		foreach (Vector2I cell in cellsWithMines)
 		{
 			EraseCell(DEFAULT_LAYER, cell);
 			SetCell(DEFAULT_LAYER, cell, TILE_SET_ID, CELLS["DEFAULT"], 1);
@@ -109,7 +109,7 @@ public partial class MinesGrid : TileMap
 
 	private void OnCellClicked(Vector2I cellCoord)
 	{
-		foreach (var cell in cellsWithMines)
+		foreach (Vector2I cell in cellsWithMines)
 			if (cell.X == cellCoord.X && cell.Y == cellCoord.Y)
 			{
 				Lose(cellCoord);
@@ -121,7 +121,7 @@ public partial class MinesGrid : TileMap
 
 		if (cellsWithFlags.Contains(cellCoord))
 		{
-			flagsPlaced = flagsPlaced - 1;
+			flagsPlaced--;
 			cellsWithFlags.Remove(cellCoord);
 		}
 	}
@@ -143,15 +143,15 @@ public partial class MinesGrid : TileMap
 		if (mineCount == 0 && !cellsWithFlags.Contains(cellCoord))
 		{
 			SetTileCell(cellCoord, "CLEAR");
-			var surroundingCells = GetSurroundingCellsToCheck(cellCoord);
-			foreach (var cell in surroundingCells)
+			List<Vector2I> surroundingCells = GetSurroundingCellsToCheck(cellCoord);
+			foreach (Vector2I cell in surroundingCells)
 				HandleSurroundingCell(cell);
 		}
 		else if (cellsWithFlags.Contains(cellCoord))
 		{
 			SetTileCell(cellCoord, "FLAG");
-			var surroundingCells = GetSurroundingCellsToCheck(cellCoord);
-			foreach (var cell in surroundingCells)
+			List<Vector2I> surroundingCells = GetSurroundingCellsToCheck(cellCoord);
+			foreach (Vector2I cell in surroundingCells)
 				HandleSurroundingCell(cell);
 		}
 		else
@@ -172,7 +172,7 @@ public partial class MinesGrid : TileMap
 		int mineCount = 0;
 		List<Vector2I> surroundingCells = GetSurroundingCellsToCheck(cellCoord);
 
-		foreach (var cell in surroundingCells)
+		foreach (Vector2I cell in surroundingCells)
 		{
 			TileData tileData = GetCellTileData(DEFAULT_LAYER, cell);
 			if (tileData != null)
@@ -190,7 +190,7 @@ public partial class MinesGrid : TileMap
 		EmitSignal(nameof(GameLostEventHandler));
 		isGameFinished = true;
 
-		foreach (var cell in cellsWithMines)
+		foreach (Vector2I cell in cellsWithMines)
 			SetTileCell(cell, "MINE");
 
 		SetTileCell(cellCoord, "MINE_RED");
@@ -210,21 +210,21 @@ public partial class MinesGrid : TileMap
 		{
 			SetTileCell(cellCoord, "DEFAULT");
 			cellsWithFlags.Remove(cellCoord);
-			flagsPlaced = flagsPlaced - 1;
+			flagsPlaced--;
 		}
 		else if (isEmptyCell)
 		{
 			if (flagsPlaced == numberOfMines)
 				return;
 
-			flagsPlaced = flagsPlaced + 1;
+			flagsPlaced++;
 			SetTileCell(cellCoord, "FLAG");
 			cellsWithFlags.Add(cellCoord);
 		}
 
 		int count = 0;
-		foreach (var flagCell in cellsWithFlags)
-			foreach (var mineCell in cellsWithMines)
+		foreach (Vector2I flagCell in cellsWithFlags)
+			foreach (Vector2I mineCell in cellsWithMines)
 				if (flagCell.X == mineCell.X && flagCell.Y == mineCell.Y)
 					count = count + 1;
 		if (count == cellsWithMines.Count)
