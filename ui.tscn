@@ -17,3 +17,6 @@ size_flags_vertical = 4
 
 [node name="MineCountPanel" type="Panel" parent="PanelContainer/HBoxContainer"]
 layout_mode = 2
+
+[node name="GameStatusButton" type="TextureButton" parent="PanelContainer/HBoxContainer"]
+layout_mode = 2
