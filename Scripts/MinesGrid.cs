@@ -186,7 +186,7 @@ public partial class MinesGrid : TileMap
 	{
 		GD.Print("LOSE!");
 
-		EmitSignal(nameof(GameLostEventHandler));
+		EmitSignal("GameLostEventHandler");
 		isGameFinished = true;
 
 		foreach (Vector2I cell in cellsWithMines)
