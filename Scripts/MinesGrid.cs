@@ -31,6 +31,8 @@ public partial class MinesGrid : TileMap
 	private List<Vector2I> cellsCheckedRecursively = new() { };
 	bool isGameFinished = false;
 
+	readonly RandomNumberGenerator random = new();
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -83,7 +85,6 @@ public partial class MinesGrid : TileMap
 
 	private void PlaceMine()
 	{
-		RandomNumberGenerator random = new();
 		for (int i = 0; i < numberOfMines; i++)
 		{
 			Vector2I cellCoordinates = new(random.RandiRange(-rows / 2, rows / 2 - 1), random.RandiRange(-columns / 2, columns / 2 - 1));
