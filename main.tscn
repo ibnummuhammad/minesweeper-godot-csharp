@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://i15f0frn8k37"]
+[gd_scene load_steps=6 format=3 uid="uid://i15f0frn8k37"]
 
 [ext_resource type="Texture2D" uid="uid://bfth2tppcxtvt" path="res://Assets/minesweeper_atlas.png" id="1_y5g1c"]
 [ext_resource type="Script" path="res://Scripts/mines_grid.cs" id="2_c067d"]
+[ext_resource type="Script" path="res://Scripts/GameStateManager.cs" id="3_io4ph"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3pfd4"]
 texture = ExtResource("1_y5g1c")
@@ -42,3 +43,4 @@ format = 2
 script = ExtResource("2_c067d")
 
 [node name="GameStateManager" type="Node" parent="."]
+script = ExtResource("3_io4ph")
