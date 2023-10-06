@@ -182,7 +182,9 @@ public partial class MinesGrid : TileMap
 
 	private void Lose(Vector2I cellCoord)
 	{
-		// EmitSignal(nameof(GameLost));
+		GD.Print("LOSE!");
+
+		EmitSignal(nameof(GameLostEventHandler));
 		isGameFinished = true;
 
 		foreach (var cell in cellsWithMines)
@@ -228,7 +230,8 @@ public partial class MinesGrid : TileMap
 
 	private void Win()
 	{
-		GD.Print("WIN");
+		GD.Print("WIN!");
+
 		isGameFinished = true;
 	}
 
