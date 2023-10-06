@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://dpljuvxpjqt3y"]
+[gd_scene load_steps=7 format=3 uid="uid://dpljuvxpjqt3y"]
 
+[ext_resource type="Script" path="res://Scripts/UI.cs" id="1_ifsdd"]
 [ext_resource type="FontFile" uid="uid://dx3hjdh75uimq" path="res://Assets/DS-DIGIB.TTF" id="1_ydsco"]
 [ext_resource type="Texture2D" uid="uid://bh6t6gan0urbe" path="res://Assets/button_smile.png" id="2_kiior"]
 [ext_resource type="Texture2D" uid="uid://b3ghf4gsde4l5" path="res://Assets/button_smile_pressed.png" id="3_iltef"]
@@ -11,6 +12,7 @@ bg_color = Color(0, 0, 0, 1)
 bg_color = Color(0, 0, 0, 1)
 
 [node name="UI" type="CanvasLayer"]
+script = ExtResource("1_ifsdd")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 custom_minimum_size = Vector2(2.08165e-12, 40)
