@@ -4,7 +4,7 @@ using System.Collections.Generic;
 public partial class MinesGrid : TileMap
 {
 	[Signal]
-	public delegate void FlagChangeEventHandler();
+	public delegate void FlagChangeEventHandler(int numberOfFlags);
 
 	[Signal]
 	public delegate void GameLostEventHandler();
@@ -109,9 +109,6 @@ public partial class MinesGrid : TileMap
 
 	private void OnCellClicked(Vector2I cellCoord)
 	{
-		TileData tileData = GetCellTileData(DEFAULT_LAYER, cellCoord);
-		Variant cellHasMine = tileData.GetCustomData("has_mine");
-
 		foreach (var cell in cellsWithMines)
 			if (cell.X == cellCoord.X && cell.Y == cellCoord.Y)
 			{
@@ -121,6 +118,12 @@ public partial class MinesGrid : TileMap
 
 		cellsCheckedRecursively.Add(cellCoord);
 		HandleCells(cellCoord, true);
+
+		if (cellsWithFlags.Contains(cellCoord))
+		{
+			flagsPlaced = flagsPlaced - 1;
+			cellsWithFlags.Remove(cellCoord);
+		}
 	}
 
 	private void HandleCells(Vector2I cellCoord, bool shouldStopAfterMine = false)
