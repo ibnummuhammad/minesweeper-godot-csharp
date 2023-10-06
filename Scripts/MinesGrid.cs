@@ -12,24 +12,23 @@ public partial class MinesGrid : TileMap
 	[Signal]
 	public delegate void GameWonEventHandler();
 
-	Dictionary<string, Godot.Vector2I> CELLS = new Dictionary<string, Godot.Vector2I>();
+	private Dictionary<string, Godot.Vector2I> CELLS = new Dictionary<string, Godot.Vector2I>();
 
 	[Export]
-	int columns = 8;
+	private int columns = 8;
 
 	[Export]
-	int rows = 8;
+	private int rows = 8;
 
 	[Export]
-	int numberOfMines = 8;
+	private int numberOfMines = 8;
 
-	int TILE_SET_ID = 0;
-	int DEFAULT_LAYER = 0;
+	private int TILE_SET_ID = 0;
+	private int DEFAULT_LAYER = 0;
 	int flagsPlaced = 0;
-
-	List<Vector2I> cellsWithMines = new List<Vector2I>() { };
-	List<Vector2I> cellsWithFlags = new List<Vector2I>() { };
-	List<Vector2I> cellsCheckedRecursively = new List<Vector2I>() { };
+	private List<Vector2I> cellsWithMines = new List<Vector2I>() { };
+	private List<Vector2I> cellsWithFlags = new List<Vector2I>() { };
+	private List<Vector2I> cellsCheckedRecursively = new List<Vector2I>() { };
 	bool isGameFinished = false;
 
 	// Called when the node enters the scene tree for the first time.
@@ -177,7 +176,7 @@ public partial class MinesGrid : TileMap
 			TileData tileData = GetCellTileData(DEFAULT_LAYER, cell);
 			if (tileData != null)
 				if (tileData.GetCustomData("has_mine").ToString() == "true")
-					mineCount = mineCount + 1;
+					mineCount++;
 		}
 
 		return mineCount;
@@ -198,7 +197,6 @@ public partial class MinesGrid : TileMap
 
 	private void PlaceFlag(Vector2I cellCoord)
 	{
-		TileData tileData = GetCellTileData(DEFAULT_LAYER, cellCoord);
 		Vector2I atlastCoordinates = GetCellAtlasCoords(DEFAULT_LAYER, cellCoord);
 		bool isEmptyCell = atlastCoordinates == new Vector2I(2, 2);
 		bool isFlagCell = atlastCoordinates == new Vector2I(0, 2);
@@ -226,7 +224,7 @@ public partial class MinesGrid : TileMap
 		foreach (Vector2I flagCell in cellsWithFlags)
 			foreach (Vector2I mineCell in cellsWithMines)
 				if (flagCell.X == mineCell.X && flagCell.Y == mineCell.Y)
-					count = count + 1;
+					count++;
 		if (count == cellsWithMines.Count)
 			Win();
 	}
