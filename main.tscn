@@ -40,3 +40,5 @@ zoom = Vector2(10, 10)
 tile_set = SubResource("TileSet_7imvg")
 format = 2
 script = ExtResource("2_c067d")
+
+[node name="GameStateManager" type="Node" parent="."]
