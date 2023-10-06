@@ -12,7 +12,7 @@ public partial class MinesGrid : TileMap
 	[Signal]
 	public delegate void GameWonEventHandler();
 
-	private Dictionary<string, Godot.Vector2I> CELLS = new Dictionary<string, Godot.Vector2I>();
+	private Dictionary<string, Godot.Vector2I> CELLS = new();
 
 	[Export]
 	private int columns = 8;
@@ -26,9 +26,9 @@ public partial class MinesGrid : TileMap
 	private int TILE_SET_ID = 0;
 	private int DEFAULT_LAYER = 0;
 	int flagsPlaced = 0;
-	private List<Vector2I> cellsWithMines = new List<Vector2I>() { };
-	private List<Vector2I> cellsWithFlags = new List<Vector2I>() { };
-	private List<Vector2I> cellsCheckedRecursively = new List<Vector2I>() { };
+	private List<Vector2I> cellsWithMines = new() { };
+	private List<Vector2I> cellsWithFlags = new() { };
+	private List<Vector2I> cellsCheckedRecursively = new() { };
 	bool isGameFinished = false;
 
 	// Called when the node enters the scene tree for the first time.
@@ -53,7 +53,7 @@ public partial class MinesGrid : TileMap
 		for (int i = 0; i < rows; i++)
 			for (int j = 0; j < columns; j++)
 			{
-				Godot.Vector2I cellCoord = new Godot.Vector2I(i - rows / 2, j - columns / 2);
+				Godot.Vector2I cellCoord = new(i - rows / 2, j - columns / 2);
 				SetTileCell(cellCoord, "DEFAULT");
 			}
 
@@ -83,10 +83,10 @@ public partial class MinesGrid : TileMap
 
 	private void PlaceMine()
 	{
-		RandomNumberGenerator random = new RandomNumberGenerator();
+		RandomNumberGenerator random = new();
 		for (int i = 0; i < numberOfMines; i++)
 		{
-			Vector2I cellCoordinates = new Vector2I(random.RandiRange(-rows / 2, rows / 2 - 1), random.RandiRange(-columns / 2, columns / 2 - 1));
+			Vector2I cellCoordinates = new(random.RandiRange(-rows / 2, rows / 2 - 1), random.RandiRange(-columns / 2, columns / 2 - 1));
 
 			while (cellsWithMines.Contains(cellCoordinates))
 				cellCoordinates = new Vector2I(random.RandiRange(-rows / 2, rows / 2 - 1), random.RandiRange(-columns / 2, columns / 2 - 1));
@@ -240,7 +240,7 @@ public partial class MinesGrid : TileMap
 	private List<Vector2I> GetSurroundingCellsToCheck(Vector2I currentCell)
 	{
 		Vector2I targetCell;
-		List<Vector2I> surroundingCells = new List<Vector2I>() { };
+		List<Vector2I> surroundingCells = new() { };
 
 		for (int y = 0; y < 3; y++)
 			for (int x = 0; x < 3; x++)
