@@ -36,15 +36,12 @@ sources/0 = SubResource("TileSetAtlasSource_3pfd4")
 [node name="main" type="Node"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2, 2)
+zoom = Vector2(10, 10)
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_7imvg")
 format = 2
 script = ExtResource("2_c067d")
-columns = 2
-rows = 2
-number_of_mines = 2
 
 [node name="UI" parent="." instance=ExtResource("4_83los")]
 
