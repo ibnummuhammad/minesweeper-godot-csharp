@@ -3,8 +3,8 @@ using System.Collections.Generic;
 
 public partial class MinesGrid : TileMap
 {
-	// [Signal]
-	// delegate void FlagChange();
+	[Signal]
+	public delegate void FlagChangeEventHandler();
 
 	// [Signal]
 	// delegate void GameLost();
