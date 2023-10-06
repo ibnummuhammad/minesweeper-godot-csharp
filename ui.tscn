@@ -10,7 +10,7 @@ bg_color = Color(0, 0, 0, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wnfip"]
 bg_color = Color(0, 0, 0, 1)
 
-[node name="CanvasLayer" type="CanvasLayer"]
+[node name="UI" type="CanvasLayer"]
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 custom_minimum_size = Vector2(2.08165e-12, 40)
