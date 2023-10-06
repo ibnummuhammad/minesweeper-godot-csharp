@@ -1,7 +1,7 @@
 using Godot;
 using System.Collections.Generic;
 
-public partial class mines_grid : TileMap
+public partial class MinesGrid : TileMap
 {
 	// [Signal]
 	// delegate void FlagChange();
