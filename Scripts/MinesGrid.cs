@@ -155,8 +155,6 @@ public partial class MinesGrid : TileMap
 		{
 			flagsPlaced--;
 			List<Vector2I> surroundingCells = GetSurroundingCellsToCheck(cellCoord);
-			foreach (Vector2I cell in surroundingCells)
-				HandleSurroundingCell(cell);
 		}
 	}
 
