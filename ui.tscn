@@ -20,3 +20,6 @@ layout_mode = 2
 
 [node name="GameStatusButton" type="TextureButton" parent="PanelContainer/HBoxContainer"]
 layout_mode = 2
+
+[node name="TimerPanel" type="Panel" parent="PanelContainer/HBoxContainer"]
+layout_mode = 2
