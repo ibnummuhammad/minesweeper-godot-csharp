@@ -82,11 +82,6 @@ public partial class MinesGrid : TileMap
 		}
 	}
 
-	private void SetTileCell(Godot.Vector2I cellCoord, string cell_type)
-	{
-		SetCell(DEFAULT_LAYER, cellCoord, TILE_SET_ID, CELLS[cell_type]);
-	}
-
 	private void PlaceMine()
 	{
 		RandomNumberGenerator random = new RandomNumberGenerator();
@@ -105,6 +100,11 @@ public partial class MinesGrid : TileMap
 			EraseCell(DEFAULT_LAYER, cell);
 			SetCell(DEFAULT_LAYER, cell, TILE_SET_ID, CELLS["DEFAULT"], 1);
 		}
+	}
+
+	private void SetTileCell(Godot.Vector2I cellCoord, string cell_type)
+	{
+		SetCell(DEFAULT_LAYER, cellCoord, TILE_SET_ID, CELLS[cell_type]);
 	}
 
 	private void PlaceFlag(Vector2I cellCoord)
