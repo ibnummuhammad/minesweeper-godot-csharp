@@ -22,7 +22,7 @@ window/size/viewport_height=400
 
 [dotnet]
 
-project/assembly_name="Minesweeper Godot C#"
+project/assembly_name="minesweeper_godot"
 
 [rendering]
 
