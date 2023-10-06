@@ -151,7 +151,6 @@ public partial class MinesGrid : TileMap
 		else if (cellsWithFlags.Contains(cellCoord))
 		{
 			flagsPlaced--;
-			SetTileCell(cellCoord, "FLAG");
 			List<Vector2I> surroundingCells = GetSurroundingCellsToCheck(cellCoord);
 			foreach (Vector2I cell in surroundingCells)
 				HandleSurroundingCell(cell);
