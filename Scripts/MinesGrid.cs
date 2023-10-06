@@ -52,15 +52,34 @@ public partial class MinesGrid : TileMap
 		ClearLayer(DEFAULT_LAYER);
 
 		for (int i = 0; i < rows; i++)
-		{
 			for (int j = 0; j < columns; j++)
 			{
 				Godot.Vector2I cellCoord = new Godot.Vector2I(i - rows / 2, j - columns / 2);
 				SetTileCell(cellCoord, "DEFAULT");
 			}
-		}
 
 		PlaceMine();
+	}
+
+	public override void _Input(InputEvent @event)
+	{
+		if (isGameFinished)
+			return;
+
+		if (@event == new InputEventMouseButton() || !@event.IsPressed())
+			return;
+
+		Vector2I clickedCellCoord = LocalToMap(GetLocalMousePosition());
+
+		if (@event is InputEventMouseButton eventMouseButton)
+		{
+			if (eventMouseButton.ButtonIndex.ToString() == "Left")
+				OnCellClicked(clickedCellCoord);
+			else if (eventMouseButton.ButtonIndex.ToString() == "Right")
+				PlaceFlag(clickedCellCoord);
+			else
+				GD.Print(@event.GetType());
+		}
 	}
 
 	private void SetTileCell(Godot.Vector2I cellCoord, string cell_type)
@@ -85,27 +104,6 @@ public partial class MinesGrid : TileMap
 		{
 			EraseCell(DEFAULT_LAYER, cell);
 			SetCell(DEFAULT_LAYER, cell, TILE_SET_ID, CELLS["DEFAULT"], 1);
-		}
-	}
-
-	public override void _Input(InputEvent @event)
-	{
-		if (isGameFinished)
-			return;
-
-		if (@event == new InputEventMouseButton() || !@event.IsPressed())
-			return;
-
-		Vector2I clickedCellCoord = LocalToMap(GetLocalMousePosition());
-
-		if (@event is InputEventMouseButton eventMouseButton)
-		{
-			if (eventMouseButton.ButtonIndex.ToString() == "Left")
-				OnCellClicked(clickedCellCoord);
-			else if (eventMouseButton.ButtonIndex.ToString() == "Right")
-				PlaceFlag(clickedCellCoord);
-			else
-				GD.Print(@event.GetType());
 		}
 	}
 
