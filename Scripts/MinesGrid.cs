@@ -154,7 +154,8 @@ public partial class MinesGrid : TileMap
 		if (cellsWithFlags.Contains(cellCoord))
 		{
 			flagsPlaced--;
-			List<Vector2I> surroundingCells = GetSurroundingCellsToCheck(cellCoord);
+			EmitSignal(nameof(FlagChangeEventHandler), flagsPlaced);
+			cellsWithFlags.Remove(cellCoord);
 		}
 	}
 
