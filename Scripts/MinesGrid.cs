@@ -121,6 +121,7 @@ public partial class MinesGrid : TileMap
 		if (cellsWithFlags.Contains(cellCoord))
 		{
 			flagsPlaced--;
+			EmitSignal(nameof(FlagChangeEventHandler), flagsPlaced);
 			cellsWithFlags.Remove(cellCoord);
 		}
 	}
@@ -174,9 +175,8 @@ public partial class MinesGrid : TileMap
 		foreach (Vector2I cell in surroundingCells)
 		{
 			TileData tileData = GetCellTileData(DEFAULT_LAYER, cell);
-			if (tileData != null)
-				if (tileData.GetCustomData("has_mine").ToString() == "true")
-					mineCount++;
+			if (tileData != null && tileData.GetCustomData("has_mine").ToString() == "true")
+				mineCount++;
 		}
 
 		return mineCount;
@@ -220,11 +220,14 @@ public partial class MinesGrid : TileMap
 			cellsWithFlags.Add(cellCoord);
 		}
 
+		EmitSignal(nameof(FlagChangeEventHandler), flagsPlaced);
+
 		int count = 0;
 		foreach (Vector2I flagCell in cellsWithFlags)
 			foreach (Vector2I mineCell in cellsWithMines)
 				if (flagCell.X == mineCell.X && flagCell.Y == mineCell.Y)
 					count++;
+
 		if (count == cellsWithMines.Count)
 			Win();
 	}
