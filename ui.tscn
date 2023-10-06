@@ -15,8 +15,13 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="MineCountPanel" type="Panel" parent="PanelContainer/HBoxContainer"]
+[node name="MinesCountPanel" type="Panel" parent="PanelContainer/HBoxContainer"]
 layout_mode = 2
+
+[node name="MinesCountLabel" type="Label" parent="PanelContainer/HBoxContainer/MinesCountPanel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
 
 [node name="GameStatusButton" type="TextureButton" parent="PanelContainer/HBoxContainer"]
 layout_mode = 2
