@@ -16,6 +16,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="MinesCountPanel" type="Panel" parent="PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 30)
 layout_mode = 2
 
 [node name="MinesCountLabel" type="Label" parent="PanelContainer/HBoxContainer/MinesCountPanel"]
