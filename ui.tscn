@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://dpljuvxpjqt3y"]
+[gd_scene load_steps=2 format=3 uid="uid://dpljuvxpjqt3y"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dxxio"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 
@@ -18,6 +20,7 @@ size_flags_vertical = 4
 [node name="MinesCountPanel" type="Panel" parent="PanelContainer/HBoxContainer"]
 custom_minimum_size = Vector2(50, 30)
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_dxxio")
 
 [node name="MinesCountLabel" type="Label" parent="PanelContainer/HBoxContainer/MinesCountPanel"]
 layout_mode = 0
