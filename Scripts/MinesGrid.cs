@@ -6,11 +6,11 @@ public partial class MinesGrid : TileMap
 	[Signal]
 	public delegate void FlagChangeEventHandler();
 
-	// [Signal]
-	// delegate void GameLost();
+	[Signal]
+	public delegate void GameLostEventHandler();
 
-	// [Signal]
-	// delegate void GameWon();
+	[Signal]
+	public delegate void GameWonEventHandler();
 
 	Dictionary<string, Godot.Vector2I> CELLS = new Dictionary<string, Godot.Vector2I>();
 
