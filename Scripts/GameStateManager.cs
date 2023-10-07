@@ -3,7 +3,7 @@ using Godot;
 public partial class GameStateManager : Node
 {
 	[Export]
-	private MinesGrid minesGrid;
+	public MinesGrid minesGrid;
 
 	[Export]
 	private UI ui;

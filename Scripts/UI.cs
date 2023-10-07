@@ -23,7 +23,7 @@ public partial class UI : CanvasLayer
 	{
 		string minesCountString = minesCount.ToString();
 		if (minesCountString.Length < 3)
-			minesCountString.PadLeft(3, '0');
+			minesCountString = minesCountString.PadLeft(3, '0');
 
 		minesCountLabel.Text = minesCountString;
 	}
