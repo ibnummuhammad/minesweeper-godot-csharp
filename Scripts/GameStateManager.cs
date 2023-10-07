@@ -2,9 +2,13 @@ using Godot;
 
 public partial class GameStateManager : Node
 {
+	[Export]
 	private MinesGrid minesGrid;
-	private Timer timer = new();
+
+	[Export]
 	private UI ui;
+
+	private Timer timer = new();
 
 	public event MinesGrid.GameLostEventHandler GameLost;
 	public event MinesGrid.GameWonEventHandler GameWon;
