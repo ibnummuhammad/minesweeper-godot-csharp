@@ -42,12 +42,12 @@ public partial class UI : CanvasLayer
 		GetTree().ReloadCurrentScene();
 	}
 
-	private void GameLost()
+	public void GameLost()
 	{
 		gameStatusButton.TextureNormal = (Texture2D)gameLostButtonTexture;
 	}
 
-	private void GameWon()
+	public void GameWon()
 	{
 		gameStatusButton.TextureNormal = (Texture2D)gameWonButtonTexture;
 	}

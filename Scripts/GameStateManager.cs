@@ -29,15 +29,18 @@ public partial class GameStateManager : Node
 	private void OnTimerTimeout()
 	{
 		timeElapsed++;
+		ui.SetTimerCount(timeElapsed);
 	}
 	public void OnGameLost()
 	{
 		timer.Stop();
+		ui.GameLost();
 	}
 
 	private void OnGameWon()
 	{
 		timer.Stop();
+		ui.GameWon();
 	}
 }
 
