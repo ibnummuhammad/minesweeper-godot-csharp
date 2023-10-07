@@ -2,22 +2,22 @@ using Godot;
 
 public partial class GameStateManager : Node
 {
-	MinesGrid minesGrid;
-	Timer timer = new Timer();
-	UI ui;
+	private MinesGrid minesGrid;
+	private Timer timer = new();
+	private UI ui;
 
-	public event MinesGrid.GameLostEventHandler gameLost;
-	public event MinesGrid.GameWonEventHandler gameWon;
-	public event MinesGrid.FlagChangeEventHandler flagChange;
+	public event MinesGrid.GameLostEventHandler GameLost;
+	public event MinesGrid.GameWonEventHandler GameWon;
+	public event MinesGrid.FlagChangeEventHandler FlagChange;
 
 	private int timeElapsed = 0;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		gameLost += OnGameLost;
-		gameWon += OnGameWon;
-		flagChange += OnFlagChange;
+		GameLost += OnGameLost;
+		GameWon += OnGameWon;
+		FlagChange += OnFlagChange;
 		ui.SetMineCount(minesGrid.numberOfMines);
 	}
 
