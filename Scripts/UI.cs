@@ -17,6 +17,15 @@ public partial class UI : CanvasLayer
 		Resource gameWonButtonTexture = ResourceLoader.Load("res://Assets/button_cleared.png");
 	}
 
+	public void SetMineCount(int minesCount)
+	{
+		string minesCountString = minesCount.ToString();
+		if (minesCountString.Length < 3)
+			minesCountString.PadLeft(3, '0');
+
+		minesCountLabel.Text = minesCountString;
+	}
+
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
