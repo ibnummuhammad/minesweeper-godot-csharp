@@ -67,9 +67,8 @@ public partial class MinesGrid : TileMap
 		if (isGameFinished)
 			return;
 
-		if (@event.GetType() == new InputEventMouseMotion().GetType() || @event.GetType() == new InputEventScreenDrag().GetType())
+		if (@event is InputEventMouseMotion || @event is InputEventScreenDrag)
 			return;
-
 
 		if (!@event.IsPressed())
 			return;
