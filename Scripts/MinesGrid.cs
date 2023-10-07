@@ -67,6 +67,12 @@ public partial class MinesGrid : TileMap
 		if (isGameFinished)
 			return;
 
+		if (@event.GetType() == new InputEventMouseMotion().GetType())
+		{
+			return;
+		}
+
+
 		if (!(@event == new InputEventMouseButton() || @event.IsPressed()))
 			return;
 
@@ -78,8 +84,6 @@ public partial class MinesGrid : TileMap
 				OnCellClicked(clickedCellCoord);
 			else if (eventMouseButton.ButtonIndex.ToString() == "Right")
 				PlaceFlag(clickedCellCoord);
-			else
-				GD.Print(@event.GetType());
 		}
 	}
 
