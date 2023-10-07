@@ -71,7 +71,7 @@ public partial class MinesGrid : TileMap
 			return;
 
 
-		if (!(@event == new InputEventMouseButton() || @event.IsPressed()))
+		if (!@event.IsPressed())
 			return;
 
 		Vector2I clickedCellCoord = LocalToMap(GetLocalMousePosition());
