@@ -12,6 +12,9 @@ public partial class UI : CanvasLayer
 		minesCountLabel = GetNode<Label>("MinesCountLabel");
 		timerCountLabel = GetNode<Label>("TimerCountLabel");
 		gameStatusButton = GetNode<TextureButton>("GameStatusButton");
+
+		Resource gameLostButtonTexture = ResourceLoader.Load("res://Assets/button_dead.png");
+		Resource gameWonButtonTexture = ResourceLoader.Load("res://Assets/button_cleared.png");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
