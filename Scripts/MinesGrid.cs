@@ -238,7 +238,7 @@ public partial class MinesGrid : TileMap
 		GD.Print("WIN!");
 
 		isGameFinished = true;
-		EmitSignal(nameof(GameWonEventHandler));
+		// EmitSignal(nameof(GameWonEventHandler));
 	}
 
 	private List<Vector2I> GetSurroundingCellsToCheck(Vector2I currentCell)
