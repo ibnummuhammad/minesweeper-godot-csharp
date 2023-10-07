@@ -43,6 +43,6 @@ tile_set = SubResource("TileSet_7imvg")
 format = 2
 script = ExtResource("2_w4vnj")
 
-[node name="GameStateManager" parent="." instance=ExtResource("3_vle0t")]
-
 [node name="UI" parent="." instance=ExtResource("4_7r47u")]
+
+[node name="GameStateManager" parent="." instance=ExtResource("3_vle0t")]
