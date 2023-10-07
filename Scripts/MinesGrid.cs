@@ -176,7 +176,7 @@ public partial class MinesGrid : TileMap
 		foreach (Vector2I cell in surroundingCells)
 		{
 			TileData tileData = GetCellTileData(DEFAULT_LAYER, cell);
-			if (tileData != null && tileData.GetCustomData("has_mine").ToString() == "true")
+			if (tileData != null && cellsWithMines.Contains(cell))
 				mineCount++;
 		}
 
