@@ -4,6 +4,8 @@ public partial class UI : CanvasLayer
 {
 	Label minesCountLabel;
 	Label timerCountLabel;
+	Resource gameLostButtonTexture;
+	Resource gameWonButtonTexture;
 	TextureButton gameStatusButton;
 
 	// Called when the node enters the scene tree for the first time.
@@ -13,8 +15,8 @@ public partial class UI : CanvasLayer
 		timerCountLabel = GetNode<Label>("TimerCountLabel");
 		gameStatusButton = GetNode<TextureButton>("GameStatusButton");
 
-		Resource gameLostButtonTexture = ResourceLoader.Load("res://Assets/button_dead.png");
-		Resource gameWonButtonTexture = ResourceLoader.Load("res://Assets/button_cleared.png");
+		gameLostButtonTexture = ResourceLoader.Load("res://Assets/button_dead.png");
+		gameWonButtonTexture = ResourceLoader.Load("res://Assets/button_cleared.png");
 	}
 
 	public void SetMineCount(int minesCount)
@@ -38,6 +40,16 @@ public partial class UI : CanvasLayer
 	private void OnGameStatusButtonPressed()
 	{
 		GetTree().ReloadCurrentScene();
+	}
+
+	private void GameLost()
+	{
+		gameStatusButton.TextureNormal = (Texture2D)gameLostButtonTexture;
+	}
+
+	private void GameWon()
+	{
+		gameStatusButton.TextureNormal = (Texture2D)gameWonButtonTexture;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
