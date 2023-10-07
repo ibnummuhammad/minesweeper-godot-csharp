@@ -1,8 +1,10 @@
-using System.Data;
 using Godot;
 
 public partial class GameStateManager : Node
 {
+	MinesGrid minesGrid;
+	UI ui;
+
 	public event MinesGrid.GameLostEventHandler gameLost;
 	Timer timer = new Timer();
 
@@ -10,11 +12,12 @@ public partial class GameStateManager : Node
 	public override void _Ready()
 	{
 		gameLost += OnGameLost;
+		ui.SetMineCount(minesGrid.numberOfMines);
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
+	private void OnFlagChange(int flagsCount)
 	{
+
 	}
 
 	public void OnGameLost()

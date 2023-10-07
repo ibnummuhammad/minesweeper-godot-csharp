@@ -21,7 +21,7 @@ public partial class MinesGrid : TileMap
 	private int rows = 8;
 
 	[Export]
-	private int numberOfMines = 8;
+	public int numberOfMines = 8;
 
 	private int TILE_SET_ID = 0;
 	private int DEFAULT_LAYER = 0;
