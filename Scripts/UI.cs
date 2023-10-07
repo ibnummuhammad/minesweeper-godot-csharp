@@ -35,6 +35,11 @@ public partial class UI : CanvasLayer
 		timerCountLabel.Text = timerString;
 	}
 
+	private void OnGameStatusButtonPressed()
+	{
+		GetTree().ReloadCurrentScene();
+	}
+
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
