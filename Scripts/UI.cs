@@ -37,7 +37,7 @@ public partial class UI : CanvasLayer
 		// timerCountLabel.Text = timerString;
 	}
 
-	private void OnGameStatusButtonPressed()
+	public void OnGameStatusButtonPressed()
 	{
 		GetTree().ReloadCurrentScene();
 	}
