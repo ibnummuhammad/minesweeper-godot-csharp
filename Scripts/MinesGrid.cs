@@ -122,7 +122,7 @@ public partial class MinesGrid : TileMap
 		if (cellsWithFlags.Contains(cellCoord))
 		{
 			flagsPlaced--;
-			EmitSignal(nameof(FlagChangeEventHandler), flagsPlaced);
+			// EmitSignal(nameof(FlagChangeEventHandler), flagsPlaced);
 			cellsWithFlags.Remove(cellCoord);
 		}
 	}
@@ -154,7 +154,7 @@ public partial class MinesGrid : TileMap
 		if (cellsWithFlags.Contains(cellCoord))
 		{
 			flagsPlaced--;
-			EmitSignal(nameof(FlagChangeEventHandler), flagsPlaced);
+			// EmitSignal(nameof(FlagChangeEventHandler), flagsPlaced);
 			cellsWithFlags.Remove(cellCoord);
 		}
 	}
