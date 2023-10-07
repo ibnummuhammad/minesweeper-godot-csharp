@@ -26,6 +26,15 @@ public partial class UI : CanvasLayer
 		minesCountLabel.Text = minesCountString;
 	}
 
+	public void SetTimerCount(int timerCount)
+	{
+		string timerString = timerCount.ToString();
+		if (timerString.Length < 3)
+			timerString = timerString.PadLeft(3, '0');
+
+		timerCountLabel.Text = timerString;
+	}
+
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
