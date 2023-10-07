@@ -7,6 +7,8 @@ public partial class GameStateManager : Node
 	UI ui;
 
 	public event MinesGrid.GameLostEventHandler gameLost;
+	public event MinesGrid.GameWonEventHandler gameWon;
+	public event MinesGrid.FlagChangeEventHandler flagChange;
 
 	private int timeElapsed = 0;
 
@@ -14,6 +16,8 @@ public partial class GameStateManager : Node
 	public override void _Ready()
 	{
 		gameLost += OnGameLost;
+		gameWon += OnGameWon;
+		flagChange += OnFlagChange;
 		ui.SetMineCount(minesGrid.numberOfMines);
 	}
 
