@@ -11,9 +11,9 @@ public partial class UI : CanvasLayer
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		minesCountLabel = GetNode<Label>("MinesCountLabel");
-		timerCountLabel = GetNode<Label>("TimerCountLabel");
-		gameStatusButton = GetNode<TextureButton>("GameStatusButton");
+		// minesCountLabel = GetNode<Label>("MinesCountLabel");
+		// timerCountLabel = GetNode<Label>("TimerCountLabel");
+		// gameStatusButton = GetNode<TextureButton>("GameStatusButton");
 
 		gameLostButtonTexture = ResourceLoader.Load("res://Assets/button_dead.png");
 		gameWonButtonTexture = ResourceLoader.Load("res://Assets/button_cleared.png");
@@ -25,7 +25,7 @@ public partial class UI : CanvasLayer
 		if (minesCountString.Length < 3)
 			minesCountString = minesCountString.PadLeft(3, '0');
 
-		minesCountLabel.Text = minesCountString;
+		// minesCountLabel.Text = minesCountString;
 	}
 
 	public void SetTimerCount(int timerCount)
@@ -34,7 +34,7 @@ public partial class UI : CanvasLayer
 		if (timerString.Length < 3)
 			timerString = timerString.PadLeft(3, '0');
 
-		timerCountLabel.Text = timerString;
+		// timerCountLabel.Text = timerString;
 	}
 
 	private void OnGameStatusButtonPressed()
