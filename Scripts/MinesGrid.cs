@@ -94,12 +94,6 @@ public partial class MinesGrid : TileMap
 
 			cellsWithMines.Add(cellCoordinates);
 		}
-
-		foreach (Vector2I cell in cellsWithMines)
-		{
-			EraseCell(DEFAULT_LAYER, cell);
-			SetCell(DEFAULT_LAYER, cell, TILE_SET_ID, CELLS["DEFAULT"], 1);
-		}
 	}
 
 	private void SetTileCell(Godot.Vector2I cellCoord, string cell_type)
