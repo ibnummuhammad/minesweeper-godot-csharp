@@ -22,29 +22,29 @@ public partial class GameStateManager : Node
 		// GameLost += OnGameLost;
 		// GameWon += OnGameWon;
 		// FlagChange += OnFlagChange;
-		ui.SetMineCount(minesGrid.numberOfMines);
+		// ui.SetMineCount(minesGrid.numberOfMines);
 	}
 
 	private void OnFlagChange(int flagsCount)
 	{
-		ui.SetMineCount(minesGrid.numberOfMines = flagsCount);
+		// ui.SetMineCount(minesGrid.numberOfMines = flagsCount);
 	}
 
 	private void OnTimerTimeout()
 	{
 		timeElapsed++;
-		ui.SetTimerCount(timeElapsed);
+		// ui.SetTimerCount(timeElapsed);
 	}
 	public void OnGameLost()
 	{
 		timer.Stop();
-		ui.GameLost();
+		// ui.GameLost();
 	}
 
 	private void OnGameWon()
 	{
 		timer.Stop();
-		ui.GameWon();
+		// ui.GameWon();
 	}
 }
 
