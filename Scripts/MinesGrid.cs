@@ -187,7 +187,7 @@ public partial class MinesGrid : TileMap
 	{
 		GD.Print("LOSE!");
 
-		EmitSignal("GameLostEventHandler");
+		// EmitSignal("GameLostEventHandler");
 		isGameFinished = true;
 
 		foreach (Vector2I cell in cellsWithMines)
@@ -221,7 +221,7 @@ public partial class MinesGrid : TileMap
 			cellsWithFlags.Add(cellCoord);
 		}
 
-		EmitSignal(nameof(FlagChangeEventHandler), flagsPlaced);
+		// EmitSignal(nameof(FlagChangeEventHandler), flagsPlaced);
 
 		int count = 0;
 		foreach (Vector2I flagCell in cellsWithFlags)
