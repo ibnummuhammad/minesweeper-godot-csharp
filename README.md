@@ -5,7 +5,7 @@ This game is the continuation of [**Minesweeper**](https://github.com/wojciech-b
 ## Gameplay
 
 <p align="center">
-<img src="Assets/gameplay.png" alt="gameplay screenshot" width="500" height="500" />
+<img src="Assets/gameplay.gif" alt="gameplay screenshot" width="500" height="500" />
 </p>
 
 ## Credits
