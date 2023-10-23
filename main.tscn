@@ -40,6 +40,7 @@ zoom = Vector2(10, 10)
 tile_set = SubResource("TileSet_7imvg")
 format = 2
 script = ExtResource("2_w4vnj")
+columns = 10
 
 [node name="UI" parent="." instance=ExtResource("4_7r47u")]
 
