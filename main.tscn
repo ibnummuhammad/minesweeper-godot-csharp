@@ -2,8 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://bfth2tppcxtvt" path="res://Assets/minesweeper_atlas.png" id="1_y5g1c"]
 [ext_resource type="Script" path="res://Scripts/MinesGrid.cs" id="2_w4vnj"]
-[ext_resource type="PackedScene" uid="uid://ccek2bmrgd3vp" path="res://game_state_manager.tscn" id="3_vle0t"]
-[ext_resource type="PackedScene" uid="uid://dpljuvxpjqt3y" path="res://ui.tscn" id="4_7r47u"]
+[ext_resource type="PackedScene" uid="uid://cojbee27i1vpw" path="res://game_state_manager.tscn" id="3_vle0t"]
+[ext_resource type="PackedScene" uid="uid://bjns8eap6a0s1" path="res://ui.tscn" id="4_7r47u"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3pfd4"]
 texture = ExtResource("1_y5g1c")
@@ -34,7 +34,7 @@ sources/0 = SubResource("TileSetAtlasSource_3pfd4")
 [node name="main" type="Node"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(10, 10)
+zoom = Vector2(5, 5)
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_7imvg")
